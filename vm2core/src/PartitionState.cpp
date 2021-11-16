@@ -89,34 +89,87 @@ bool VmPartitionState::ReadPartitionBlob(VM_SAVED_STATE_DUMP_HANDLE dump_handle)
 	for (uint32_t i = 0; i < m_num_vps; i++) {
 		//wprintf(L"CPU ID: %u", i );
 		m_prstatus[i].pr_reg[0] = GetRegisterValue64(dump_handle, i, X64_RegisterR15);
+		wprintf(L"vm2core: CPU %d: R15=%llx\n", i, m_prstatus[i].pr_reg[0]);
+
 		m_prstatus[i].pr_reg[1] = GetRegisterValue64(dump_handle, i, X64_RegisterR14);
+		wprintf(L"vm2core: CPU %d: R14=%llx\n", i, m_prstatus[i].pr_reg[1]);
+
 		m_prstatus[i].pr_reg[2] = GetRegisterValue64(dump_handle, i, X64_RegisterR13);
+		wprintf(L"vm2core: CPU %d: R13=%llx\n", i, m_prstatus[i].pr_reg[2]);
+
 		m_prstatus[i].pr_reg[3] = GetRegisterValue64(dump_handle, i, X64_RegisterR12);
+		wprintf(L"vm2core: CPU %d: R12=%llx\n", i, m_prstatus[i].pr_reg[3]);
+
 		m_prstatus[i].pr_reg[4] = GetRegisterValue64(dump_handle, i, X64_RegisterRbp);
+		wprintf(L"vm2core: CPU %d: RBP=%llx\n", i, m_prstatus[i].pr_reg[4]);
+
 		m_prstatus[i].pr_reg[5] = GetRegisterValue64(dump_handle, i, X64_RegisterRbx);
+		wprintf(L"vm2core: CPU %d: RBX=%llx\n", i, m_prstatus[i].pr_reg[5]);
+
 		m_prstatus[i].pr_reg[6] = GetRegisterValue64(dump_handle, i, X64_RegisterR11);
+		wprintf(L"vm2core: CPU %d: R11=%llx\n", i, m_prstatus[i].pr_reg[6]);
+
 		m_prstatus[i].pr_reg[7] = GetRegisterValue64(dump_handle, i, X64_RegisterR10);
+		wprintf(L"vm2core: CPU %d: R10=%llx\n", i, m_prstatus[i].pr_reg[7]);
+
 		m_prstatus[i].pr_reg[8] = GetRegisterValue64(dump_handle, i, X64_RegisterR9);
+		wprintf(L"vm2core: CPU %d: R9=%llx\n", i, m_prstatus[i].pr_reg[8]);
+
 		m_prstatus[i].pr_reg[9] = GetRegisterValue64(dump_handle, i, X64_RegisterR8);
+		wprintf(L"vm2core: CPU %d: R8=%llx\n", i, m_prstatus[i].pr_reg[9]);
+
 		m_prstatus[i].pr_reg[10] = GetRegisterValue64(dump_handle, i, X64_RegisterRax);
+		wprintf(L"vm2core: CPU %d: RAX=%llx\n", i, m_prstatus[i].pr_reg[10]);
+
 		m_prstatus[i].pr_reg[11] = GetRegisterValue64(dump_handle, i, X64_RegisterRcx);
+		wprintf(L"vm2core: CPU %d: RCX=%llx\n", i, m_prstatus[i].pr_reg[11]);
+
 		m_prstatus[i].pr_reg[12] = GetRegisterValue64(dump_handle, i, X64_RegisterRdx);
+		wprintf(L"vm2core: CPU %d: RDX=%llx\n", i, m_prstatus[i].pr_reg[12]);
+
 		m_prstatus[i].pr_reg[13] = GetRegisterValue64(dump_handle, i, X64_RegisterRsi);
+		wprintf(L"vm2core: CPU %d: RSI=%llx\n", i, m_prstatus[i].pr_reg[13]);
+
 		m_prstatus[i].pr_reg[14] = GetRegisterValue64(dump_handle, i, X64_RegisterRdi);
+		wprintf(L"vm2core: CPU %d: RDI=%llx\n", i, m_prstatus[i].pr_reg[14]);
+
 		// orig_ax not stored in state files.
 		//m_prstatus[i].pr_reg[15] = GetRegisterValue64(dump_handle, i, X64_RegisterOrigAx);
 		m_prstatus[i].pr_reg[15] = 0;
+		wprintf(L"vm2core: CPU %d: OrigAX=%llx\n", i, m_prstatus[i].pr_reg[15]);
+
 		m_prstatus[i].pr_reg[16] = GetRegisterValue64(dump_handle, i, X64_RegisterRip);
+		wprintf(L"vm2core: CPU %d: RIP=%llx\n", i, m_prstatus[i].pr_reg[16]);
+
 		m_prstatus[i].pr_reg[17] = GetRegisterValue64(dump_handle, i, X64_RegisterSegCs);
+		wprintf(L"vm2core: CPU %d: SegCS=%llx\n", i, m_prstatus[i].pr_reg[17]);
+
 		m_prstatus[i].pr_reg[18] = GetRegisterValue64(dump_handle, i, X64_RegisterRFlags);
+		wprintf(L"vm2core: CPU %d: EFLAGS=%llx\n", i, m_prstatus[i].pr_reg[18]);
+
 		m_prstatus[i].pr_reg[19] = GetRegisterValue64(dump_handle, i, X64_RegisterRsp);
+		wprintf(L"vm2core: CPU %d: RSP=%llx\n", i, m_prstatus[i].pr_reg[19]);
+
 		m_prstatus[i].pr_reg[20] = GetRegisterValue64(dump_handle, i, X64_RegisterSegSs);
+		wprintf(L"vm2core: CPU %d: SegSS=%llx\n", i, m_prstatus[i].pr_reg[20]);
+
 		m_prstatus[i].pr_reg[21] = GetRegisterValue64(dump_handle, i, X64_RegisterBaseFs);
+		wprintf(L"vm2core: CPU %d: BaseFS=%llx\n", i, m_prstatus[i].pr_reg[21]);
+
 		m_prstatus[i].pr_reg[22] = GetRegisterValue64(dump_handle, i, X64_RegisterBaseGs);
+		wprintf(L"vm2core: CPU %d: BaseGS=%llx\n", i, m_prstatus[i].pr_reg[22]);
+
 		m_prstatus[i].pr_reg[23] = GetRegisterValue64(dump_handle, i, X64_RegisterSegDs);
+		wprintf(L"vm2core: CPU %d: SegDS=%llx\n", i, m_prstatus[i].pr_reg[23]);
+
 		m_prstatus[i].pr_reg[24] = GetRegisterValue64(dump_handle, i, X64_RegisterSegEs);
+		wprintf(L"vm2core: CPU %d: SegES=%llx\n", i, m_prstatus[i].pr_reg[24]);
+
 		m_prstatus[i].pr_reg[25] = GetRegisterValue64(dump_handle, i, X64_RegisterSegFs);
+		wprintf(L"vm2core: CPU %d: SegFS=%llx\n", i, m_prstatus[i].pr_reg[25]);
+
 		m_prstatus[i].pr_reg[26] = GetRegisterValue64(dump_handle, i, X64_RegisterSegGs);
+		wprintf(L"vm2core: CPU %d: SegGS=%llx\n", i, m_prstatus[i].pr_reg[26]);
     }
 
 	return true;
